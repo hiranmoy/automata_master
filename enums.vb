@@ -37,4 +37,12 @@ Public Module enums
         cSpeaker
     End Enum
 
+
+    Public Enum AttributeType
+        cNone = -1
+        cVoltas_Window_AC_3Star_2014 = 0
+        cF_AND_D_F550X
+        cFlood_Light_10W
+    End Enum
+
 End Module

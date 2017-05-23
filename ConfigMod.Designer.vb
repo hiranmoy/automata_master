@@ -25,28 +25,28 @@ Partial Class ConfigMod
         Me.AddApplianceBt = New System.Windows.Forms.Button()
         Me.ApplianceList = New System.Windows.Forms.ComboBox()
         Me.ConfigApplianceGrp = New System.Windows.Forms.GroupBox()
-        Me.ApplianceRpiTb = New System.Windows.Forms.TextBox()
-        Me.ApplianceGPIONm = New System.Windows.Forms.NumericUpDown()
-        Me.AppliancePriority = New System.Windows.Forms.NumericUpDown()
-        Me.ApplianceNameTb = New System.Windows.Forms.TextBox()
-        Me.ApplianceDeleteBt = New System.Windows.Forms.Button()
-        Me.ApplianceNameLb = New System.Windows.Forms.Label()
-        Me.ApplianceRpiLb = New System.Windows.Forms.Label()
-        Me.ApplianceGPIOLb = New System.Windows.Forms.Label()
-        Me.ApplianceTypeLb = New System.Windows.Forms.Label()
-        Me.AppliancePriorityLb = New System.Windows.Forms.Label()
-        Me.ApplianceRoomNm = New System.Windows.Forms.NumericUpDown()
-        Me.ApplianceRoomLb = New System.Windows.Forms.Label()
-        Me.ApplianceTypeList = New System.Windows.Forms.ComboBox()
         Me.SpecialApplianceGrp = New System.Windows.Forms.GroupBox()
-        Me.RGLEDList = New System.Windows.Forms.ComboBox()
+        Me.SpeakerList = New System.Windows.Forms.ComboBox()
         Me.ACList = New System.Windows.Forms.ComboBox()
-        Me.SpeckerList = New System.Windows.Forms.ComboBox()
+        Me.RGLEDList = New System.Windows.Forms.ComboBox()
+        Me.ApplianceRoomLb = New System.Windows.Forms.Label()
+        Me.ApplianceRoomNm = New System.Windows.Forms.NumericUpDown()
+        Me.AppliancePriorityLb = New System.Windows.Forms.Label()
+        Me.ApplianceTypeLb = New System.Windows.Forms.Label()
+        Me.ApplianceGPIOLb = New System.Windows.Forms.Label()
+        Me.ApplianceRpiLb = New System.Windows.Forms.Label()
+        Me.ApplianceNameLb = New System.Windows.Forms.Label()
+        Me.ApplianceDeleteBt = New System.Windows.Forms.Button()
+        Me.ApplianceNameTb = New System.Windows.Forms.TextBox()
+        Me.AppliancePriority = New System.Windows.Forms.NumericUpDown()
+        Me.ApplianceTypeList = New System.Windows.Forms.ComboBox()
+        Me.ApplianceGPIONm = New System.Windows.Forms.NumericUpDown()
+        Me.ApplianceRpiTb = New System.Windows.Forms.TextBox()
         Me.ConfigApplianceGrp.SuspendLayout()
-        CType(Me.ApplianceGPIONm, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AppliancePriority, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ApplianceRoomNm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SpecialApplianceGrp.SuspendLayout()
+        CType(Me.ApplianceRoomNm, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AppliancePriority, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ApplianceGPIONm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'AddApplianceBt
@@ -94,36 +94,110 @@ Partial Class ConfigMod
         Me.ConfigApplianceGrp.TabStop = False
         Me.ConfigApplianceGrp.Text = "Appliance"
         '
-        'ApplianceRpiTb
+        'SpecialApplianceGrp
         '
-        Me.ApplianceRpiTb.Location = New System.Drawing.Point(214, 185)
-        Me.ApplianceRpiTb.Name = "ApplianceRpiTb"
-        Me.ApplianceRpiTb.Size = New System.Drawing.Size(83, 20)
-        Me.ApplianceRpiTb.TabIndex = 2
+        Me.SpecialApplianceGrp.BackColor = System.Drawing.Color.Snow
+        Me.SpecialApplianceGrp.Controls.Add(Me.SpeakerList)
+        Me.SpecialApplianceGrp.Controls.Add(Me.ACList)
+        Me.SpecialApplianceGrp.Controls.Add(Me.RGLEDList)
+        Me.SpecialApplianceGrp.Location = New System.Drawing.Point(26, 246)
+        Me.SpecialApplianceGrp.Name = "SpecialApplianceGrp"
+        Me.SpecialApplianceGrp.Size = New System.Drawing.Size(597, 160)
+        Me.SpecialApplianceGrp.TabIndex = 16
+        Me.SpecialApplianceGrp.TabStop = False
+        Me.SpecialApplianceGrp.Text = "Category"
         '
-        'ApplianceGPIONm
+        'SpeakerList
         '
-        Me.ApplianceGPIONm.Location = New System.Drawing.Point(328, 185)
-        Me.ApplianceGPIONm.Maximum = New Decimal(New Integer() {27, 0, 0, 0})
-        Me.ApplianceGPIONm.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.ApplianceGPIONm.Name = "ApplianceGPIONm"
-        Me.ApplianceGPIONm.Size = New System.Drawing.Size(42, 20)
-        Me.ApplianceGPIONm.TabIndex = 3
-        Me.ApplianceGPIONm.Value = New Decimal(New Integer() {21, 0, 0, 0})
+        Me.SpeakerList.Enabled = False
+        Me.SpeakerList.FormattingEnabled = True
+        Me.SpeakerList.Items.AddRange(New Object() {"F&D F550X"})
+        Me.SpeakerList.Location = New System.Drawing.Point(15, 104)
+        Me.SpeakerList.Name = "SpeakerList"
+        Me.SpeakerList.Size = New System.Drawing.Size(210, 21)
+        Me.SpeakerList.TabIndex = 2
         '
-        'AppliancePriority
+        'ACList
         '
-        Me.AppliancePriority.Location = New System.Drawing.Point(579, 117)
-        Me.AppliancePriority.Name = "AppliancePriority"
-        Me.AppliancePriority.Size = New System.Drawing.Size(44, 20)
-        Me.AppliancePriority.TabIndex = 5
+        Me.ACList.Enabled = False
+        Me.ACList.FormattingEnabled = True
+        Me.ACList.Items.AddRange(New Object() {"Voltas Window AC (3*) (2014)"})
+        Me.ACList.Location = New System.Drawing.Point(367, 38)
+        Me.ACList.Name = "ACList"
+        Me.ACList.Size = New System.Drawing.Size(210, 21)
+        Me.ACList.TabIndex = 1
         '
-        'ApplianceNameTb
+        'RGLEDList
         '
-        Me.ApplianceNameTb.Location = New System.Drawing.Point(213, 118)
-        Me.ApplianceNameTb.Name = "ApplianceNameTb"
-        Me.ApplianceNameTb.Size = New System.Drawing.Size(126, 20)
-        Me.ApplianceNameTb.TabIndex = 6
+        Me.RGLEDList.Enabled = False
+        Me.RGLEDList.FormattingEnabled = True
+        Me.RGLEDList.Items.AddRange(New Object() {"Flood Light (10 W)"})
+        Me.RGLEDList.Location = New System.Drawing.Point(15, 38)
+        Me.RGLEDList.Name = "RGLEDList"
+        Me.RGLEDList.Size = New System.Drawing.Size(210, 21)
+        Me.RGLEDList.TabIndex = 0
+        '
+        'ApplianceRoomLb
+        '
+        Me.ApplianceRoomLb.AutoSize = True
+        Me.ApplianceRoomLb.Location = New System.Drawing.Point(374, 100)
+        Me.ApplianceRoomLb.Name = "ApplianceRoomLb"
+        Me.ApplianceRoomLb.Size = New System.Drawing.Size(61, 13)
+        Me.ApplianceRoomLb.TabIndex = 14
+        Me.ApplianceRoomLb.Text = "Room No. :"
+        '
+        'ApplianceRoomNm
+        '
+        Me.ApplianceRoomNm.Location = New System.Drawing.Point(377, 118)
+        Me.ApplianceRoomNm.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.ApplianceRoomNm.Name = "ApplianceRoomNm"
+        Me.ApplianceRoomNm.Size = New System.Drawing.Size(42, 20)
+        Me.ApplianceRoomNm.TabIndex = 13
+        '
+        'AppliancePriorityLb
+        '
+        Me.AppliancePriorityLb.AutoSize = True
+        Me.AppliancePriorityLb.Location = New System.Drawing.Point(576, 101)
+        Me.AppliancePriorityLb.Name = "AppliancePriorityLb"
+        Me.AppliancePriorityLb.Size = New System.Drawing.Size(44, 13)
+        Me.AppliancePriorityLb.TabIndex = 12
+        Me.AppliancePriorityLb.Text = "Priority :"
+        '
+        'ApplianceTypeLb
+        '
+        Me.ApplianceTypeLb.AutoSize = True
+        Me.ApplianceTypeLb.Location = New System.Drawing.Point(452, 101)
+        Me.ApplianceTypeLb.Name = "ApplianceTypeLb"
+        Me.ApplianceTypeLb.Size = New System.Drawing.Size(37, 13)
+        Me.ApplianceTypeLb.TabIndex = 11
+        Me.ApplianceTypeLb.Text = "Type :"
+        '
+        'ApplianceGPIOLb
+        '
+        Me.ApplianceGPIOLb.AutoSize = True
+        Me.ApplianceGPIOLb.Location = New System.Drawing.Point(325, 169)
+        Me.ApplianceGPIOLb.Name = "ApplianceGPIOLb"
+        Me.ApplianceGPIOLb.Size = New System.Drawing.Size(39, 13)
+        Me.ApplianceGPIOLb.TabIndex = 10
+        Me.ApplianceGPIOLb.Text = "GPIO :"
+        '
+        'ApplianceRpiLb
+        '
+        Me.ApplianceRpiLb.AutoSize = True
+        Me.ApplianceRpiLb.Location = New System.Drawing.Point(211, 169)
+        Me.ApplianceRpiLb.Name = "ApplianceRpiLb"
+        Me.ApplianceRpiLb.Size = New System.Drawing.Size(45, 13)
+        Me.ApplianceRpiLb.TabIndex = 9
+        Me.ApplianceRpiLb.Text = "Module:"
+        '
+        'ApplianceNameLb
+        '
+        Me.ApplianceNameLb.AutoSize = True
+        Me.ApplianceNameLb.Location = New System.Drawing.Point(210, 102)
+        Me.ApplianceNameLb.Name = "ApplianceNameLb"
+        Me.ApplianceNameLb.Size = New System.Drawing.Size(41, 13)
+        Me.ApplianceNameLb.TabIndex = 8
+        Me.ApplianceNameLb.Text = "Name :"
         '
         'ApplianceDeleteBt
         '
@@ -136,67 +210,19 @@ Partial Class ConfigMod
         Me.ApplianceDeleteBt.Text = "Delete"
         Me.ApplianceDeleteBt.UseVisualStyleBackColor = False
         '
-        'ApplianceNameLb
+        'ApplianceNameTb
         '
-        Me.ApplianceNameLb.AutoSize = True
-        Me.ApplianceNameLb.Location = New System.Drawing.Point(210, 102)
-        Me.ApplianceNameLb.Name = "ApplianceNameLb"
-        Me.ApplianceNameLb.Size = New System.Drawing.Size(41, 13)
-        Me.ApplianceNameLb.TabIndex = 8
-        Me.ApplianceNameLb.Text = "Name :"
+        Me.ApplianceNameTb.Location = New System.Drawing.Point(213, 118)
+        Me.ApplianceNameTb.Name = "ApplianceNameTb"
+        Me.ApplianceNameTb.Size = New System.Drawing.Size(126, 20)
+        Me.ApplianceNameTb.TabIndex = 6
         '
-        'ApplianceRpiLb
+        'AppliancePriority
         '
-        Me.ApplianceRpiLb.AutoSize = True
-        Me.ApplianceRpiLb.Location = New System.Drawing.Point(211, 169)
-        Me.ApplianceRpiLb.Name = "ApplianceRpiLb"
-        Me.ApplianceRpiLb.Size = New System.Drawing.Size(45, 13)
-        Me.ApplianceRpiLb.TabIndex = 9
-        Me.ApplianceRpiLb.Text = "Module:"
-        '
-        'ApplianceGPIOLb
-        '
-        Me.ApplianceGPIOLb.AutoSize = True
-        Me.ApplianceGPIOLb.Location = New System.Drawing.Point(325, 169)
-        Me.ApplianceGPIOLb.Name = "ApplianceGPIOLb"
-        Me.ApplianceGPIOLb.Size = New System.Drawing.Size(39, 13)
-        Me.ApplianceGPIOLb.TabIndex = 10
-        Me.ApplianceGPIOLb.Text = "GPIO :"
-        '
-        'ApplianceTypeLb
-        '
-        Me.ApplianceTypeLb.AutoSize = True
-        Me.ApplianceTypeLb.Location = New System.Drawing.Point(452, 101)
-        Me.ApplianceTypeLb.Name = "ApplianceTypeLb"
-        Me.ApplianceTypeLb.Size = New System.Drawing.Size(37, 13)
-        Me.ApplianceTypeLb.TabIndex = 11
-        Me.ApplianceTypeLb.Text = "Type :"
-        '
-        'AppliancePriorityLb
-        '
-        Me.AppliancePriorityLb.AutoSize = True
-        Me.AppliancePriorityLb.Location = New System.Drawing.Point(576, 101)
-        Me.AppliancePriorityLb.Name = "AppliancePriorityLb"
-        Me.AppliancePriorityLb.Size = New System.Drawing.Size(44, 13)
-        Me.AppliancePriorityLb.TabIndex = 12
-        Me.AppliancePriorityLb.Text = "Priority :"
-        '
-        'ApplianceRoomNm
-        '
-        Me.ApplianceRoomNm.Location = New System.Drawing.Point(377, 118)
-        Me.ApplianceRoomNm.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.ApplianceRoomNm.Name = "ApplianceRoomNm"
-        Me.ApplianceRoomNm.Size = New System.Drawing.Size(42, 20)
-        Me.ApplianceRoomNm.TabIndex = 13
-        '
-        'ApplianceRoomLb
-        '
-        Me.ApplianceRoomLb.AutoSize = True
-        Me.ApplianceRoomLb.Location = New System.Drawing.Point(374, 100)
-        Me.ApplianceRoomLb.Name = "ApplianceRoomLb"
-        Me.ApplianceRoomLb.Size = New System.Drawing.Size(61, 13)
-        Me.ApplianceRoomLb.TabIndex = 14
-        Me.ApplianceRoomLb.Text = "Room No. :"
+        Me.AppliancePriority.Location = New System.Drawing.Point(579, 117)
+        Me.AppliancePriority.Name = "AppliancePriority"
+        Me.AppliancePriority.Size = New System.Drawing.Size(44, 20)
+        Me.AppliancePriority.TabIndex = 5
         '
         'ApplianceTypeList
         '
@@ -207,48 +233,22 @@ Partial Class ConfigMod
         Me.ApplianceTypeList.Size = New System.Drawing.Size(106, 21)
         Me.ApplianceTypeList.TabIndex = 4
         '
-        'SpecialApplianceGrp
+        'ApplianceGPIONm
         '
-        Me.SpecialApplianceGrp.BackColor = System.Drawing.Color.Snow
-        Me.SpecialApplianceGrp.Controls.Add(Me.SpeckerList)
-        Me.SpecialApplianceGrp.Controls.Add(Me.ACList)
-        Me.SpecialApplianceGrp.Controls.Add(Me.RGLEDList)
-        Me.SpecialApplianceGrp.Location = New System.Drawing.Point(26, 246)
-        Me.SpecialApplianceGrp.Name = "SpecialApplianceGrp"
-        Me.SpecialApplianceGrp.Size = New System.Drawing.Size(597, 160)
-        Me.SpecialApplianceGrp.TabIndex = 16
-        Me.SpecialApplianceGrp.TabStop = False
-        Me.SpecialApplianceGrp.Text = "Category"
+        Me.ApplianceGPIONm.Location = New System.Drawing.Point(328, 185)
+        Me.ApplianceGPIONm.Maximum = New Decimal(New Integer() {27, 0, 0, 0})
+        Me.ApplianceGPIONm.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
+        Me.ApplianceGPIONm.Name = "ApplianceGPIONm"
+        Me.ApplianceGPIONm.Size = New System.Drawing.Size(42, 20)
+        Me.ApplianceGPIONm.TabIndex = 3
+        Me.ApplianceGPIONm.Value = New Decimal(New Integer() {21, 0, 0, 0})
         '
-        'RGLEDList
+        'ApplianceRpiTb
         '
-        Me.RGLEDList.Enabled = False
-        Me.RGLEDList.FormattingEnabled = True
-        Me.RGLEDList.Items.AddRange(New Object() {"Flood Light (10 W)"})
-        Me.RGLEDList.Location = New System.Drawing.Point(15, 38)
-        Me.RGLEDList.Name = "RGLEDList"
-        Me.RGLEDList.Size = New System.Drawing.Size(210, 21)
-        Me.RGLEDList.TabIndex = 0
-        '
-        'ACList
-        '
-        Me.ACList.Enabled = False
-        Me.ACList.FormattingEnabled = True
-        Me.ACList.Items.AddRange(New Object() {"Voltas Window AC (3*) (2014)"})
-        Me.ACList.Location = New System.Drawing.Point(367, 38)
-        Me.ACList.Name = "ACList"
-        Me.ACList.Size = New System.Drawing.Size(210, 21)
-        Me.ACList.TabIndex = 1
-        '
-        'SpeckerList
-        '
-        Me.SpeckerList.Enabled = False
-        Me.SpeckerList.FormattingEnabled = True
-        Me.SpeckerList.Items.AddRange(New Object() {"F&D F550X"})
-        Me.SpeckerList.Location = New System.Drawing.Point(15, 104)
-        Me.SpeckerList.Name = "SpeckerList"
-        Me.SpeckerList.Size = New System.Drawing.Size(210, 21)
-        Me.SpeckerList.TabIndex = 2
+        Me.ApplianceRpiTb.Location = New System.Drawing.Point(214, 185)
+        Me.ApplianceRpiTb.Name = "ApplianceRpiTb"
+        Me.ApplianceRpiTb.Size = New System.Drawing.Size(83, 20)
+        Me.ApplianceRpiTb.TabIndex = 2
         '
         'ConfigMod
         '
@@ -261,10 +261,10 @@ Partial Class ConfigMod
         Me.Text = "Configure"
         Me.ConfigApplianceGrp.ResumeLayout(False)
         Me.ConfigApplianceGrp.PerformLayout()
-        CType(Me.ApplianceGPIONm, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AppliancePriority, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ApplianceRoomNm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SpecialApplianceGrp.ResumeLayout(False)
+        CType(Me.ApplianceRoomNm, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AppliancePriority, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ApplianceGPIONm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -288,5 +288,5 @@ Partial Class ConfigMod
     Friend WithEvents SpecialApplianceGrp As GroupBox
     Friend WithEvents ACList As ComboBox
     Friend WithEvents RGLEDList As ComboBox
-    Friend WithEvents SpeckerList As ComboBox
+    Friend WithEvents SpeakerList As ComboBox
 End Class

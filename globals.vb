@@ -30,7 +30,7 @@ Module globals
     'file/folder paths
     '------------------------------------------------------------------------------------------------------------------------------------------------
 
-    'settings file path
+    'appliance settings file path
     Public gApplianceSettingsFile = My.Application.Info.DirectoryPath + "\ApplianceSettings.ini"
 
 

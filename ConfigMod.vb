@@ -39,6 +39,9 @@ Public Class ConfigMod
 
         'initalize comboxes
         ApplianceTypeList.SelectedIndex = 0
+        RGLEDList.SelectedIndex = 0
+        ACList.SelectedIndex = 0
+        SpeakerList.SelectedIndex = 0
 
 
         'restore setup from files
@@ -61,6 +64,22 @@ Public Class ConfigMod
             Exit Sub
         End If
 
+        Dim attribute As AttributeType = AttributeType.cNone
+
+        If RGLEDList.Enabled Then
+            Select Case RGLEDList.SelectedIndex
+                Case 0 : attribute = AttributeType.cFlood_Light_10W
+            End Select
+        ElseIf ACList.Enabled Then
+            Select Case ACList.SelectedIndex
+                Case 0 : attribute = AttributeType.cVoltas_Window_AC_3Star_2014
+            End Select
+        ElseIf SpeakerList.Enabled Then
+            Select Case SpeakerList.SelectedIndex
+                Case 0 : attribute = AttributeType.cF_AND_D_F550X
+            End Select
+        End If
+
         ApplianceList.SelectedIndex = -1
 
         If CreateAppliances(ApplianceNameTb.Text,
@@ -68,7 +87,8 @@ Public Class ConfigMod
                             ApplianceGPIONm.Value,
                             ApplianceRoomNm.Value,
                             ApplianceTypeList.SelectedIndex,
-                            AppliancePriority.Value) = False Then
+                            AppliancePriority.Value,
+                            attribute) = False Then
             Exit Sub
         End If
 
@@ -93,6 +113,10 @@ Public Class ConfigMod
         ApplianceRoomNm.Value = 0
         ApplianceTypeList.SelectedIndex = 0
         AppliancePriority.Value = 0
+
+        RGLEDList.SelectedIndex = 0
+        ACList.SelectedIndex = 0
+        SpeakerList.SelectedIndex = 0
     End Sub
 
 
@@ -114,7 +138,22 @@ Public Class ConfigMod
             ApplianceRoomNm.Value = .Item4
             ApplianceTypeList.SelectedIndex = .Item5
             AppliancePriority.Value = .Item6
-            SpecialApplianceGrp.Enabled = .Item7
+
+            If .Item7 < 0 Then
+                SpecialApplianceGrp.Enabled = False
+            Else
+                SpecialApplianceGrp.Enabled = True
+
+                RGLEDList.Enabled = False
+                ACList.Enabled = False
+                SpeakerList.Enabled = False
+
+                Select Case .Item7
+                    Case AttributeType.cVoltas_Window_AC_3Star_2014 : ACList.Enabled = True
+                    Case AttributeType.cF_AND_D_F550X : SpeakerList.Enabled = True
+                    Case AttributeType.cFlood_Light_10W : RGLEDList.Enabled = True
+                End Select
+            End If
         End With
     End Sub
 
@@ -126,13 +165,13 @@ Public Class ConfigMod
 
         RGLEDList.Enabled = False
         ACList.Enabled = False
-        SpeckerList.Enabled = False
+        SpeakerList.Enabled = False
 
-        Dim name As String = ApplianceTypeList.SelectedItem.ToString
+        Dim type As String = ApplianceTypeList.SelectedItem.ToString
 
-        RGLEDList.Enabled = (name = "RGB LED")
-        ACList.Enabled = (name = "AC")
-        SpeckerList.Enabled = (name = "Speaker")
+        RGLEDList.Enabled = (type = "RGB LED")
+        ACList.Enabled = (type = "AC")
+        SpeakerList.Enabled = (type = "Speaker")
     End Sub
 
 End Class

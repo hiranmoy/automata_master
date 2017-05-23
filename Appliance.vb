@@ -46,7 +46,7 @@ Public Class Appliance
     Private mPriority As Integer
 
     'indicates whether it is a special appliance
-    Protected mSpecial As Boolean
+    Private mAttribute As AttributeType
 
 
     Public Sub New(name As String,
@@ -54,14 +54,14 @@ Public Class Appliance
                    gpio As Integer,
                    room As Integer,
                    type As ApplianceType,
-                   priority As Integer)
+                   priority As Integer,
+                   attribute As Integer)
         mName = name
         Debug.Assert(Not mName.Contains(" "))
 
         mRPI = rpi
         Debug.Assert(Not mRPI.Contains(" "))
 
-        Debug.Assert((gpio > 0) And (gpio <= 40))
         mGPIO = gpio
 
         Debug.Assert(mRoom >= 0)
@@ -73,8 +73,9 @@ Public Class Appliance
         Debug.Assert(priority >= 0)
         mPriority = priority
 
-        'default initialization
-        mSpecial = False
+        Debug.Assert(attribute >= -1)
+        mAttribute = attribute
+        Debug.Assert(CStr(mAttribute) < 40)
     End Sub
 
     Public Sub New(fileIdx As Integer)
@@ -116,9 +117,9 @@ Public Class Appliance
         Return mPriority
     End Function
 
-    'get special check attribute
-    Public Function GetIsSpecial() As Boolean
-        Return mSpecial
+    'get attribute
+    Public Function GetAttribute() As AttributeType
+        Return mAttribute
     End Function
 
 
@@ -147,10 +148,10 @@ Public Class Appliance
         mPriority = priority
     End Sub
 
-    'set special check attribute
-    Public Function SetIsSpecial(special As Boolean) As Boolean
-        mSpecial = special
-    End Function
+    'set attribute
+    Public Sub SetAttribute(attribute As Boolean)
+        mAttribute = attribute
+    End Sub
 
 
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -158,20 +159,20 @@ Public Class Appliance
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     'save
-    Public Sub Save(fileIdx As Integer)
+    Public Overridable Sub Save(fileIdx As Integer)
         Print(fileIdx, mName.ToString + "                                        : name" + Environment.NewLine)
         Print(fileIdx, mRPI.ToString + "                                        : rpi name" + Environment.NewLine)
         Print(fileIdx, mGPIO.ToString + "                                        : gpio" + Environment.NewLine)
         Print(fileIdx, mRoom.ToString + "                                        : room no" + Environment.NewLine)
-        Print(fileIdx, Int(mType).ToString + "                                        : type" + Environment.NewLine)
+        Print(fileIdx, mType.ToString + "                                        : type" + Environment.NewLine)
         Print(fileIdx, mPriority.ToString + "                                        : priority" + Environment.NewLine)
-        Print(fileIdx, Int(mSpecial).ToString + "                                        : special attribute" + Environment.NewLine)
+        Print(fileIdx, mAttribute.ToString + "                                        : attribute" + Environment.NewLine)
         Print(fileIdx, "--------------------------------------------------" + Environment.NewLine)
     End Sub
 
     'restore
     Public Sub Restore(fileIdx As Integer)
-        'rpi name
+        'name
         Dim data As String = LineInput(fileIdx)
         Dim spaceChar As Integer = data.Substring(0, 40).IndexOf(" ")
         mName = data.Substring(0, spaceChar)
@@ -191,15 +192,15 @@ Public Class Appliance
 
         'type
         data = LineInput(fileIdx)
-        mType = CInt(data.Substring(0, 40))
+        mType = DirectCast([Enum].Parse(GetType(ApplianceType), data.Substring(0, 40)), ApplianceType)
 
         'priority
         data = LineInput(fileIdx)
         mPriority = CInt(data.Substring(0, 40))
 
-        'get special check attribute
+        'attribute
         data = LineInput(fileIdx)
-        mSpecial = CBool(CInt(data.Substring(0, 40)))
+        mAttribute = DirectCast([Enum].Parse(GetType(AttributeType), data.Substring(0, 40)), AttributeType)
 
         'end line
         data = LineInput(fileIdx)
@@ -218,9 +219,8 @@ Module ApplianceHelper
                              gpio As Integer,
                              room As Integer,
                              type As Integer,
-                             priority As Integer) As Boolean
-        Debug.Assert(type >= 0)
-
+                             priority As Integer,
+                             attribute As Integer) As Boolean
         Dim device As Appliance
 
         'check if this appliance already exists
@@ -232,13 +232,14 @@ Module ApplianceHelper
                 device.SetRoom(room)
                 device.SetType(type)
                 device.SetPriority(priority)
+                device.SetAttribute(attribute)
 
                 SaveAppliances()
                 Return False
             End If
         Next
 
-        device = New Appliance(name, rpi, gpio, room, type, priority)
+        device = New Appliance(name, rpi, gpio, room, type, priority, attribute)
         gAppliances.Add(device)
 
         SaveAppliances()
@@ -246,17 +247,17 @@ Module ApplianceHelper
     End Function
 
     'load appliance
-    Public Function LoadAppliance(applanceIdx As Integer) As Tuple(Of String, String, Integer, Integer, ApplianceType, Integer, Boolean)
+    Public Function LoadAppliance(applanceIdx As Integer) As Tuple(Of String, String, Integer, Integer, ApplianceType, Integer, Integer)
         Dim device As Appliance = gAppliances(applanceIdx)
 
-        Return New Tuple(Of String, String, Integer, Integer, ApplianceType, Integer, Boolean) _
+        Return New Tuple(Of String, String, Integer, Integer, ApplianceType, Integer, Integer) _
             (device.GetName(),
              device.GetRPI(),
              device.GetGPIO(),
              device.GetRoom(),
              device.GetApplianceType(),
              device.GetPriority(),
-             device.GetIsSpecial())
+             device.GetAttribute())
     End Function
 
     'delete appliance
@@ -291,7 +292,7 @@ Module ApplianceHelper
             gAppliances.Add(device)
 
             'update control
-            ConfigMod.ApplianceList.Items.Add(device.GetName)
+            ConfigMod.ApplianceList.Items.Add(device.GetName())
         Loop
 
         FileClose(1)
