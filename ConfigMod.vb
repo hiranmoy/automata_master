@@ -42,10 +42,13 @@ Public Class ConfigMod
         RGLEDList.SelectedIndex = 0
         ACList.SelectedIndex = 0
         SpeakerList.SelectedIndex = 0
+        SensorTypeList.SelectedIndex = 0
 
 
         'restore setup from files
         RestoreAppliances()
+        RestoreCameras()
+        RestoreSensors()
     End Sub
 
 
@@ -56,7 +59,7 @@ Public Class ConfigMod
 
     'add appliace button click
     Private Sub AddApplianceButton_Click(sender As Object, e As EventArgs) Handles AddApplianceBt.Click
-        If CheckIfValidApplianceName(ApplianceNameTb.Text) = False Then
+        If CheckIfValidName(ApplianceNameTb.Text) = False Then
             Exit Sub
         End If
 
@@ -82,16 +85,9 @@ Public Class ConfigMod
 
         ApplianceList.SelectedIndex = -1
 
-        If CreateAppliances(ApplianceNameTb.Text,
-                            ApplianceRpiTb.Text,
-                            ApplianceGPIONm.Value,
-                            ApplianceRoomNm.Value,
-                            ApplianceTypeList.SelectedIndex,
-                            AppliancePriority.Value,
-                            attribute) = False Then
+        If CreateAppliances(ApplianceNameTb.Text, ApplianceRpiTb.Text, ApplianceGPIONm.Value, ApplianceRoomNm.Value, ApplianceTypeList.SelectedIndex, AppliancePriority.Value, attribute) = False Then
             Exit Sub
         End If
-
         ApplianceList.Items.Add(ApplianceNameTb.Text)
     End Sub
 
@@ -119,7 +115,73 @@ Public Class ConfigMod
         SpeakerList.SelectedIndex = 0
     End Sub
 
+    'add camera button click
+    Private Sub AddCameraBt_Click(sender As Object, e As EventArgs) Handles AddCameraBt.Click
+        If CheckIfValidName(CameraNameTb.Text) = False Then
+            Exit Sub
+        End If
 
+        If CheckIfValidRPIName(CameraRpiTb.Text) = False Then
+            Exit Sub
+        End If
+
+        If CreateCameras(CameraNameTb.Text, CameraRpiTb.Text, CameraRoomNm.Value, CameraPriority.Value) = False Then
+            Exit Sub
+        End If
+        CameraList.Items.Add(CameraNameTb.Text)
+    End Sub
+
+    'delete camera
+    Private Sub CameraDeleteBt_Click(sender As Object, e As EventArgs) Handles CameraDeleteBt.Click
+        If CameraList.SelectedIndex < 0 Then
+            Exit Sub
+        End If
+
+        DeleteCamera(CameraList.SelectedIndex)
+
+        CameraList.Items.RemoveAt(CameraList.SelectedIndex)
+
+        'reset appliance controls
+        CameraList.ResetText()
+        CameraNameTb.Clear()
+        CameraRpiTb.Clear()
+        CameraRoomNm.Value = 0
+        CameraPriority.Value = 0
+    End Sub
+
+    'add sensor button click
+    Private Sub AddSensorBt_Click(sender As Object, e As EventArgs) Handles AddSensorBt.Click
+        If CheckIfValidName(SensorNameTb.Text) = False Then
+            Exit Sub
+        End If
+
+        If CheckIfValidRPIName(SensorRpiTb.Text) = False Then
+            Exit Sub
+        End If
+
+        If CreateSensors(SensorNameTb.Text, SensorRpiTb.Text, SensorRoomNm.Value, SensorTypeList.SelectedIndex) = False Then
+            Exit Sub
+        End If
+        SensorList.Items.Add(SensorNameTb.Text)
+    End Sub
+
+    'delete sensor
+    Private Sub SensorDeleteBt_Click(sender As Object, e As EventArgs) Handles SensorDeleteBt.Click
+        If SensorList.SelectedIndex < 0 Then
+            Exit Sub
+        End If
+
+        DeleteSensor(SensorList.SelectedIndex)
+
+        SensorList.Items.RemoveAt(SensorList.SelectedIndex)
+
+        'reset appliance controls
+        SensorList.ResetText()
+        SensorNameTb.Clear()
+        SensorRpiTb.Clear()
+        SensorRoomNm.Value = 0
+        SensorTypeList.SelectedIndex = -1
+    End Sub
 
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     'combobox
@@ -172,6 +234,34 @@ Public Class ConfigMod
         RGLEDList.Enabled = (type = "RGB LED")
         ACList.Enabled = (type = "AC")
         SpeakerList.Enabled = (type = "Speaker")
+    End Sub
+
+    'camera list
+    Private Sub CameraList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CameraList.SelectedIndexChanged
+        If CameraList.SelectedIndex < 0 Then
+            Exit Sub
+        End If
+
+        With LoadCamera(CameraList.SelectedIndex)
+            CameraNameTb.Text = .Item1
+            CameraRpiTb.Text = .Item2
+            CameraRoomNm.Value = .Item3
+            CameraPriority.Value = .Item4
+        End With
+    End Sub
+
+    'sensor list
+    Private Sub SensorList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SensorList.SelectedIndexChanged
+        If SensorList.SelectedIndex < 0 Then
+            Exit Sub
+        End If
+
+        With LoadSensor(SensorList.SelectedIndex)
+            SensorNameTb.Text = .Item1
+            SensorRpiTb.Text = .Item2
+            SensorRoomNm.Value = .Item3
+            SensorTypeList.SelectedIndex = .Item4
+        End With
     End Sub
 
 End Class

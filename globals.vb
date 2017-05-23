@@ -33,12 +33,24 @@ Module globals
     'appliance settings file path
     Public gApplianceSettingsFile = My.Application.Info.DirectoryPath + "\ApplianceSettings.ini"
 
+    'camera settings file path
+    Public gCameraSettingsFile = My.Application.Info.DirectoryPath + "\CameraSettings.ini"
+
+    'sensor settings file path
+    Public gSensorSettingsFile = My.Application.Info.DirectoryPath + "\SensorSettings.ini"
+
 
 
     'data structures
     '------------------------------------------------------------------------------------------------------------------------------------------------
 
-    'appliance array
+    'appliance list
     Public gAppliances As List(Of Appliance) = New List(Of Appliance)
+
+    'camera list
+    Public gCameras As List(Of Camera) = New List(Of Camera)
+
+    'sensor list
+    Public gSensors As List(Of Sensor) = New List(Of Sensor)
 
 End Module

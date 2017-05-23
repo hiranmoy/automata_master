@@ -42,11 +42,40 @@ Partial Class ConfigMod
         Me.ApplianceTypeList = New System.Windows.Forms.ComboBox()
         Me.ApplianceGPIONm = New System.Windows.Forms.NumericUpDown()
         Me.ApplianceRpiTb = New System.Windows.Forms.TextBox()
+        Me.ConfigCameraGrp = New System.Windows.Forms.GroupBox()
+        Me.CameraRoomNm = New System.Windows.Forms.NumericUpDown()
+        Me.CameraDeleteBt = New System.Windows.Forms.Button()
+        Me.CameraNameTb = New System.Windows.Forms.TextBox()
+        Me.CameraPriority = New System.Windows.Forms.NumericUpDown()
+        Me.AddCameraBt = New System.Windows.Forms.Button()
+        Me.CameraList = New System.Windows.Forms.ComboBox()
+        Me.CameraRoomLb = New System.Windows.Forms.Label()
+        Me.CameraPriorityLb = New System.Windows.Forms.Label()
+        Me.CameraNameLb = New System.Windows.Forms.Label()
+        Me.ConfigSensorGrp = New System.Windows.Forms.GroupBox()
+        Me.SensorRoomLb = New System.Windows.Forms.Label()
+        Me.SensorRoomNm = New System.Windows.Forms.NumericUpDown()
+        Me.SensorNameLb = New System.Windows.Forms.Label()
+        Me.SensorNameTb = New System.Windows.Forms.TextBox()
+        Me.SensorDeleteBt = New System.Windows.Forms.Button()
+        Me.SensorList = New System.Windows.Forms.ComboBox()
+        Me.AddSensorBt = New System.Windows.Forms.Button()
+        Me.CameraRpiLb = New System.Windows.Forms.Label()
+        Me.CameraRpiTb = New System.Windows.Forms.TextBox()
+        Me.SensorRpiLb = New System.Windows.Forms.Label()
+        Me.SensorRpiTb = New System.Windows.Forms.TextBox()
+        Me.SensorTypeLb = New System.Windows.Forms.Label()
+        Me.SensorTypeList = New System.Windows.Forms.ComboBox()
         Me.ConfigApplianceGrp.SuspendLayout()
         Me.SpecialApplianceGrp.SuspendLayout()
         CType(Me.ApplianceRoomNm, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AppliancePriority, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ApplianceGPIONm, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ConfigCameraGrp.SuspendLayout()
+        CType(Me.CameraRoomNm, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CameraPriority, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ConfigSensorGrp.SuspendLayout()
+        CType(Me.SensorRoomNm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'AddApplianceBt
@@ -250,12 +279,248 @@ Partial Class ConfigMod
         Me.ApplianceRpiTb.Size = New System.Drawing.Size(83, 20)
         Me.ApplianceRpiTb.TabIndex = 2
         '
+        'ConfigCameraGrp
+        '
+        Me.ConfigCameraGrp.BackColor = System.Drawing.Color.PapayaWhip
+        Me.ConfigCameraGrp.Controls.Add(Me.CameraRpiLb)
+        Me.ConfigCameraGrp.Controls.Add(Me.CameraRoomLb)
+        Me.ConfigCameraGrp.Controls.Add(Me.CameraRpiTb)
+        Me.ConfigCameraGrp.Controls.Add(Me.CameraPriorityLb)
+        Me.ConfigCameraGrp.Controls.Add(Me.CameraRoomNm)
+        Me.ConfigCameraGrp.Controls.Add(Me.CameraNameLb)
+        Me.ConfigCameraGrp.Controls.Add(Me.CameraNameTb)
+        Me.ConfigCameraGrp.Controls.Add(Me.CameraDeleteBt)
+        Me.ConfigCameraGrp.Controls.Add(Me.CameraList)
+        Me.ConfigCameraGrp.Controls.Add(Me.AddCameraBt)
+        Me.ConfigCameraGrp.Controls.Add(Me.CameraPriority)
+        Me.ConfigCameraGrp.Location = New System.Drawing.Point(670, 12)
+        Me.ConfigCameraGrp.Name = "ConfigCameraGrp"
+        Me.ConfigCameraGrp.Size = New System.Drawing.Size(630, 168)
+        Me.ConfigCameraGrp.TabIndex = 3
+        Me.ConfigCameraGrp.TabStop = False
+        Me.ConfigCameraGrp.Text = "Camera"
+        '
+        'CameraRoomNm
+        '
+        Me.CameraRoomNm.Location = New System.Drawing.Point(329, 119)
+        Me.CameraRoomNm.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.CameraRoomNm.Name = "CameraRoomNm"
+        Me.CameraRoomNm.Size = New System.Drawing.Size(42, 20)
+        Me.CameraRoomNm.TabIndex = 22
+        '
+        'CameraDeleteBt
+        '
+        Me.CameraDeleteBt.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.CameraDeleteBt.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.CameraDeleteBt.Location = New System.Drawing.Point(180, 36)
+        Me.CameraDeleteBt.Name = "CameraDeleteBt"
+        Me.CameraDeleteBt.Size = New System.Drawing.Size(75, 32)
+        Me.CameraDeleteBt.TabIndex = 21
+        Me.CameraDeleteBt.Text = "Delete"
+        Me.CameraDeleteBt.UseVisualStyleBackColor = False
+        '
+        'CameraNameTb
+        '
+        Me.CameraNameTb.Location = New System.Drawing.Point(166, 119)
+        Me.CameraNameTb.Name = "CameraNameTb"
+        Me.CameraNameTb.Size = New System.Drawing.Size(126, 20)
+        Me.CameraNameTb.TabIndex = 20
+        '
+        'CameraPriority
+        '
+        Me.CameraPriority.Location = New System.Drawing.Point(419, 119)
+        Me.CameraPriority.Name = "CameraPriority"
+        Me.CameraPriority.Size = New System.Drawing.Size(44, 20)
+        Me.CameraPriority.TabIndex = 19
+        '
+        'AddCameraBt
+        '
+        Me.AddCameraBt.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.AddCameraBt.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.AddCameraBt.Location = New System.Drawing.Point(25, 89)
+        Me.AddCameraBt.Name = "AddCameraBt"
+        Me.AddCameraBt.Size = New System.Drawing.Size(102, 50)
+        Me.AddCameraBt.TabIndex = 17
+        Me.AddCameraBt.Text = "Add/Update" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Camera"
+        Me.AddCameraBt.UseVisualStyleBackColor = False
+        '
+        'CameraList
+        '
+        Me.CameraList.FormattingEnabled = True
+        Me.CameraList.Location = New System.Drawing.Point(25, 36)
+        Me.CameraList.Name = "CameraList"
+        Me.CameraList.Size = New System.Drawing.Size(121, 21)
+        Me.CameraList.TabIndex = 18
+        '
+        'CameraRoomLb
+        '
+        Me.CameraRoomLb.AutoSize = True
+        Me.CameraRoomLb.Location = New System.Drawing.Point(326, 103)
+        Me.CameraRoomLb.Name = "CameraRoomLb"
+        Me.CameraRoomLb.Size = New System.Drawing.Size(61, 13)
+        Me.CameraRoomLb.TabIndex = 19
+        Me.CameraRoomLb.Text = "Room No. :"
+        '
+        'CameraPriorityLb
+        '
+        Me.CameraPriorityLb.AutoSize = True
+        Me.CameraPriorityLb.Location = New System.Drawing.Point(416, 103)
+        Me.CameraPriorityLb.Name = "CameraPriorityLb"
+        Me.CameraPriorityLb.Size = New System.Drawing.Size(44, 13)
+        Me.CameraPriorityLb.TabIndex = 18
+        Me.CameraPriorityLb.Text = "Priority :"
+        '
+        'CameraNameLb
+        '
+        Me.CameraNameLb.AutoSize = True
+        Me.CameraNameLb.Location = New System.Drawing.Point(167, 103)
+        Me.CameraNameLb.Name = "CameraNameLb"
+        Me.CameraNameLb.Size = New System.Drawing.Size(41, 13)
+        Me.CameraNameLb.TabIndex = 17
+        Me.CameraNameLb.Text = "Name :"
+        '
+        'ConfigSensorGrp
+        '
+        Me.ConfigSensorGrp.BackColor = System.Drawing.Color.PapayaWhip
+        Me.ConfigSensorGrp.Controls.Add(Me.SensorTypeLb)
+        Me.ConfigSensorGrp.Controls.Add(Me.SensorRpiLb)
+        Me.ConfigSensorGrp.Controls.Add(Me.SensorTypeList)
+        Me.ConfigSensorGrp.Controls.Add(Me.SensorRoomLb)
+        Me.ConfigSensorGrp.Controls.Add(Me.SensorRpiTb)
+        Me.ConfigSensorGrp.Controls.Add(Me.SensorRoomNm)
+        Me.ConfigSensorGrp.Controls.Add(Me.SensorNameLb)
+        Me.ConfigSensorGrp.Controls.Add(Me.SensorNameTb)
+        Me.ConfigSensorGrp.Controls.Add(Me.SensorDeleteBt)
+        Me.ConfigSensorGrp.Controls.Add(Me.SensorList)
+        Me.ConfigSensorGrp.Controls.Add(Me.AddSensorBt)
+        Me.ConfigSensorGrp.Location = New System.Drawing.Point(670, 283)
+        Me.ConfigSensorGrp.Name = "ConfigSensorGrp"
+        Me.ConfigSensorGrp.Size = New System.Drawing.Size(630, 168)
+        Me.ConfigSensorGrp.TabIndex = 4
+        Me.ConfigSensorGrp.TabStop = False
+        Me.ConfigSensorGrp.Text = "Sensor"
+        '
+        'SensorRoomLb
+        '
+        Me.SensorRoomLb.AutoSize = True
+        Me.SensorRoomLb.Location = New System.Drawing.Point(326, 103)
+        Me.SensorRoomLb.Name = "SensorRoomLb"
+        Me.SensorRoomLb.Size = New System.Drawing.Size(61, 13)
+        Me.SensorRoomLb.TabIndex = 19
+        Me.SensorRoomLb.Text = "Room No. :"
+        '
+        'SensorRoomNm
+        '
+        Me.SensorRoomNm.Location = New System.Drawing.Point(329, 119)
+        Me.SensorRoomNm.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.SensorRoomNm.Name = "SensorRoomNm"
+        Me.SensorRoomNm.Size = New System.Drawing.Size(42, 20)
+        Me.SensorRoomNm.TabIndex = 22
+        '
+        'SensorNameLb
+        '
+        Me.SensorNameLb.AutoSize = True
+        Me.SensorNameLb.Location = New System.Drawing.Point(167, 102)
+        Me.SensorNameLb.Name = "SensorNameLb"
+        Me.SensorNameLb.Size = New System.Drawing.Size(41, 13)
+        Me.SensorNameLb.TabIndex = 17
+        Me.SensorNameLb.Text = "Name :"
+        '
+        'SensorNameTb
+        '
+        Me.SensorNameTb.Location = New System.Drawing.Point(166, 118)
+        Me.SensorNameTb.Name = "SensorNameTb"
+        Me.SensorNameTb.Size = New System.Drawing.Size(126, 20)
+        Me.SensorNameTb.TabIndex = 20
+        '
+        'SensorDeleteBt
+        '
+        Me.SensorDeleteBt.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.SensorDeleteBt.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.SensorDeleteBt.Location = New System.Drawing.Point(180, 36)
+        Me.SensorDeleteBt.Name = "SensorDeleteBt"
+        Me.SensorDeleteBt.Size = New System.Drawing.Size(75, 32)
+        Me.SensorDeleteBt.TabIndex = 21
+        Me.SensorDeleteBt.Text = "Delete"
+        Me.SensorDeleteBt.UseVisualStyleBackColor = False
+        '
+        'SensorList
+        '
+        Me.SensorList.FormattingEnabled = True
+        Me.SensorList.Location = New System.Drawing.Point(25, 36)
+        Me.SensorList.Name = "SensorList"
+        Me.SensorList.Size = New System.Drawing.Size(121, 21)
+        Me.SensorList.TabIndex = 18
+        '
+        'AddSensorBt
+        '
+        Me.AddSensorBt.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.AddSensorBt.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.AddSensorBt.Location = New System.Drawing.Point(25, 89)
+        Me.AddSensorBt.Name = "AddSensorBt"
+        Me.AddSensorBt.Size = New System.Drawing.Size(102, 50)
+        Me.AddSensorBt.TabIndex = 17
+        Me.AddSensorBt.Text = "Add/Update" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Camera"
+        Me.AddSensorBt.UseVisualStyleBackColor = False
+        '
+        'CameraRpiLb
+        '
+        Me.CameraRpiLb.AutoSize = True
+        Me.CameraRpiLb.Location = New System.Drawing.Point(497, 103)
+        Me.CameraRpiLb.Name = "CameraRpiLb"
+        Me.CameraRpiLb.Size = New System.Drawing.Size(45, 13)
+        Me.CameraRpiLb.TabIndex = 18
+        Me.CameraRpiLb.Text = "Module:"
+        '
+        'CameraRpiTb
+        '
+        Me.CameraRpiTb.Location = New System.Drawing.Point(500, 119)
+        Me.CameraRpiTb.Name = "CameraRpiTb"
+        Me.CameraRpiTb.Size = New System.Drawing.Size(83, 20)
+        Me.CameraRpiTb.TabIndex = 17
+        '
+        'SensorRpiLb
+        '
+        Me.SensorRpiLb.AutoSize = True
+        Me.SensorRpiLb.Location = New System.Drawing.Point(538, 103)
+        Me.SensorRpiLb.Name = "SensorRpiLb"
+        Me.SensorRpiLb.Size = New System.Drawing.Size(45, 13)
+        Me.SensorRpiLb.TabIndex = 24
+        Me.SensorRpiLb.Text = "Module:"
+        '
+        'SensorRpiTb
+        '
+        Me.SensorRpiTb.Location = New System.Drawing.Point(541, 119)
+        Me.SensorRpiTb.Name = "SensorRpiTb"
+        Me.SensorRpiTb.Size = New System.Drawing.Size(83, 20)
+        Me.SensorRpiTb.TabIndex = 23
+        '
+        'SensorTypeLb
+        '
+        Me.SensorTypeLb.AutoSize = True
+        Me.SensorTypeLb.Location = New System.Drawing.Point(406, 101)
+        Me.SensorTypeLb.Name = "SensorTypeLb"
+        Me.SensorTypeLb.Size = New System.Drawing.Size(37, 13)
+        Me.SensorTypeLb.TabIndex = 13
+        Me.SensorTypeLb.Text = "Type :"
+        '
+        'SensorTypeList
+        '
+        Me.SensorTypeList.FormattingEnabled = True
+        Me.SensorTypeList.Items.AddRange(New Object() {"SenseHat", "MotionSensor", "GasSensors"})
+        Me.SensorTypeList.Location = New System.Drawing.Point(409, 117)
+        Me.SensorTypeList.Name = "SensorTypeList"
+        Me.SensorTypeList.Size = New System.Drawing.Size(106, 21)
+        Me.SensorTypeList.TabIndex = 12
+        '
         'ConfigMod
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LemonChiffon
-        Me.ClientSize = New System.Drawing.Size(674, 470)
+        Me.ClientSize = New System.Drawing.Size(1311, 463)
+        Me.Controls.Add(Me.ConfigSensorGrp)
+        Me.Controls.Add(Me.ConfigCameraGrp)
         Me.Controls.Add(Me.ConfigApplianceGrp)
         Me.Name = "ConfigMod"
         Me.Text = "Configure"
@@ -265,6 +530,13 @@ Partial Class ConfigMod
         CType(Me.ApplianceRoomNm, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AppliancePriority, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ApplianceGPIONm, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ConfigCameraGrp.ResumeLayout(False)
+        Me.ConfigCameraGrp.PerformLayout()
+        CType(Me.CameraRoomNm, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CameraPriority, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ConfigSensorGrp.ResumeLayout(False)
+        Me.ConfigSensorGrp.PerformLayout()
+        CType(Me.SensorRoomNm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -289,4 +561,28 @@ Partial Class ConfigMod
     Friend WithEvents ACList As ComboBox
     Friend WithEvents RGLEDList As ComboBox
     Friend WithEvents SpeakerList As ComboBox
+    Friend WithEvents ConfigCameraGrp As GroupBox
+    Friend WithEvents CameraRoomLb As Label
+    Friend WithEvents CameraPriorityLb As Label
+    Friend WithEvents CameraRoomNm As NumericUpDown
+    Friend WithEvents CameraNameLb As Label
+    Friend WithEvents CameraNameTb As TextBox
+    Friend WithEvents CameraDeleteBt As Button
+    Friend WithEvents CameraList As ComboBox
+    Friend WithEvents AddCameraBt As Button
+    Friend WithEvents CameraPriority As NumericUpDown
+    Friend WithEvents ConfigSensorGrp As GroupBox
+    Friend WithEvents SensorRoomLb As Label
+    Friend WithEvents SensorRoomNm As NumericUpDown
+    Friend WithEvents SensorNameLb As Label
+    Friend WithEvents SensorNameTb As TextBox
+    Friend WithEvents SensorDeleteBt As Button
+    Friend WithEvents SensorList As ComboBox
+    Friend WithEvents AddSensorBt As Button
+    Friend WithEvents CameraRpiLb As Label
+    Friend WithEvents CameraRpiTb As TextBox
+    Friend WithEvents SensorRpiLb As Label
+    Friend WithEvents SensorRpiTb As TextBox
+    Friend WithEvents SensorTypeLb As Label
+    Friend WithEvents SensorTypeList As ComboBox
 End Class

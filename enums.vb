@@ -45,4 +45,12 @@ Public Module enums
         cFlood_Light_10W
     End Enum
 
+
+    Public Enum SensorType
+        cNone = -1
+        cSenseHat
+        cMotionSensor
+        cGasSensors
+    End Enum
+
 End Module

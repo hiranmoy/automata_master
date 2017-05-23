@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Appliance.vb" />
+    <Compile Include="Camera.vb" />
     <Compile Include="ConfigMod.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +98,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Sensor.vb" />
+    <Compile Include="utils.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ConfigMod.resx">
