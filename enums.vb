@@ -33,6 +33,7 @@ Public Module enums
         cFan
         cSmallLight
         cMosquitoRepeller
+        cPlug
         cAC
         cSpeaker
     End Enum

@@ -24,6 +24,10 @@
 ' 
 ' Author: Hiranmoy Basak (hiranmoy.iitkgp@gmail.com)
 
+
+Imports System.IO
+
+
 Public Class ConfigMod
 
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -57,7 +61,7 @@ Public Class ConfigMod
     'button
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    'add appliace button click
+    'add appliace button
     Private Sub AddApplianceButton_Click(sender As Object, e As EventArgs) Handles AddApplianceBt.Click
         If CheckIfValidName(ApplianceNameTb.Text) = False Then
             Exit Sub
@@ -115,7 +119,7 @@ Public Class ConfigMod
         SpeakerList.SelectedIndex = 0
     End Sub
 
-    'add camera button click
+    'add camera button
     Private Sub AddCameraBt_Click(sender As Object, e As EventArgs) Handles AddCameraBt.Click
         If CheckIfValidName(CameraNameTb.Text) = False Then
             Exit Sub
@@ -149,7 +153,7 @@ Public Class ConfigMod
         CameraPriority.Value = 0
     End Sub
 
-    'add sensor button click
+    'add sensor button
     Private Sub AddSensorBt_Click(sender As Object, e As EventArgs) Handles AddSensorBt.Click
         If CheckIfValidName(SensorNameTb.Text) = False Then
             Exit Sub
@@ -182,6 +186,13 @@ Public Class ConfigMod
         SensorRoomNm.Value = 0
         SensorTypeList.SelectedIndex = -1
     End Sub
+
+    'config done
+    Private Sub ConfigDone_Click(sender As Object, e As EventArgs) Handles ConfigDone.Click
+        My.Forms.Controller.Show()
+    End Sub
+
+
 
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     'combobox
@@ -262,6 +273,23 @@ Public Class ConfigMod
             SensorRoomNm.Value = .Item3
             SensorTypeList.SelectedIndex = .Item4
         End With
+    End Sub
+
+
+
+    '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    'timer
+    '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Timer1.Enabled = False
+
+        'check if settings file(s) exist
+        Dim settingsDir As DirectoryInfo = New DirectoryInfo(gCurArea)
+        Dim settingFiles() As FileInfo = settingsDir.GetFiles("*.ini")
+        If settingFiles.Length > 0 Then
+            My.Forms.Controller.Show()
+        End If
     End Sub
 
 End Class

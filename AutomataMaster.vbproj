@@ -81,6 +81,12 @@
       <DependentUpon>ConfigMod.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controller.Designer.vb">
+      <DependentUpon>Controller.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controller.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="enums.vb" />
     <Compile Include="globals.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -104,6 +110,9 @@
   <ItemGroup>
     <EmbeddedResource Include="ConfigMod.resx">
       <DependentUpon>ConfigMod.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controller.resx">
+      <DependentUpon>Controller.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

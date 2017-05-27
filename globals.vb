@@ -30,14 +30,17 @@ Module globals
     'file/folder paths
     '------------------------------------------------------------------------------------------------------------------------------------------------
 
+    'main folder: application start area for now
+    Public gCurArea As String = My.Application.Info.DirectoryPath
+
     'appliance settings file path
-    Public gApplianceSettingsFile = My.Application.Info.DirectoryPath + "\ApplianceSettings.ini"
+    Public gApplianceSettingsFile As String = gCurArea + "\ApplianceSettings.ini"
 
     'camera settings file path
-    Public gCameraSettingsFile = My.Application.Info.DirectoryPath + "\CameraSettings.ini"
+    Public gCameraSettingsFile As String = gCurArea + "\CameraSettings.ini"
 
     'sensor settings file path
-    Public gSensorSettingsFile = My.Application.Info.DirectoryPath + "\SensorSettings.ini"
+    Public gSensorSettingsFile As String = gCurArea + "\SensorSettings.ini"
 
 
 
